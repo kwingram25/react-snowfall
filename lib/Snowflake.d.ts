@@ -6,6 +6,7 @@ export interface SnowflakeProps {
     changeFrequency: number;
 }
 export declare type SnowflakeConfig = Partial<SnowflakeProps>;
+export declare const defaultConfig: SnowflakeProps;
 /** An individual snowflake that will update it's location every call to `draw` */
 declare class Snowflake {
     config: SnowflakeConfig;

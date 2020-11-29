@@ -1,16 +1,12 @@
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { targetFrameTime } from './config'
 import { useComponentSize, useSnowfallStyle, useSnowflakes } from './hooks'
-import { SnowflakeConfig } from './Snowflake'
+import { defaultConfig, SnowflakeConfig } from './Snowflake'
 
 export interface SnowfallProps {
   config?: SnowflakeConfig
   snowflakeCount?: number
   style?: React.CSSProperties
-}
-
-const defaultConfig = {
-  color: '#dee4fd',
 }
 
 const Snowfall = ({ snowflakeCount = 150, style, config = defaultConfig }: SnowfallProps = {}) => {

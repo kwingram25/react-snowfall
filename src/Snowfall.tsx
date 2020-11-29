@@ -16,15 +16,13 @@ const Snowfall = ({ snowflakeCount = 150, style, config = defaultConfig }: Snowf
   const canvasSize = useComponentSize(canvasRef)
   const animationFrame = useRef(0)
 
-  const lastUpdate = useRef(Date.now())
   const { color, speed, wind, radius, changeFrequency } = config
-  const mergedConfig = useMemo(() => ({ ...defaultConfig, color, speed, wind, radius, changeFrequency }), [
-    color,
-    speed,
-    wind,
-    radius,
-    changeFrequency,
-  ])
+  const lastUpdate = useRef(Date.now())
+
+  const mergedConfig = useMemo(
+    () => Object.assign({}, defaultConfig, { color, speed, wind, radius, changeFrequency }),
+    [color, speed, wind, radius, changeFrequency],
+  )
   const snowflakes = useSnowflakes(canvasRef, snowflakeCount, mergedConfig)
 
   const updateCanvasRef = (element: HTMLCanvasElement) => {

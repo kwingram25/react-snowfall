@@ -1,5 +1,4 @@
 import { useCallback, useLayoutEffect, useEffect, useState, MutableRefObject, CSSProperties, useMemo } from 'react'
-import useDeepCompareEffect from 'use-deep-compare-effect'
 import Snowflake, { SnowflakeConfig } from './Snowflake'
 import { snowfallBaseStyle } from './config'
 import { getSize } from './utils'
@@ -38,8 +37,7 @@ export const useSnowflakes = (
   const [snowflakes, setSnowflakes] = useState<Snowflake[]>([])
 
   // Handle change of amount
-  useDeepCompareEffect(() => {
-    console.log(config, '1')
+  useEffect(() => {
     setSnowflakes(snowflakes => {
       const sizeDifference = amount - snowflakes.length
 
@@ -56,8 +54,7 @@ export const useSnowflakes = (
   }, [amount, canvasRef, config])
 
   // Handle change of config
-  useDeepCompareEffect(() => {
-    console.log(config, '2')
+  useEffect(() => {
     setSnowflakes(snowflakes =>
       snowflakes.map(snowflake => {
         snowflake.config = config

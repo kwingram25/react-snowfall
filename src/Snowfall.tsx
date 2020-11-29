@@ -21,7 +21,7 @@ const Snowfall = ({ snowflakeCount = 150, style, config = {} }: SnowfallProps = 
   const animationFrame = useRef(0)
 
   const lastUpdate = useRef(Date.now())
-  const mergedConfig = { ...defaultConfig, ...config };
+  const mergedConfig = useMemo(() => ({ ...defaultConfig, ...config }), [config]);
   const snowflakes = useSnowflakes(canvasRef, snowflakeCount, mergedConfig)
 
   const updateCanvasRef = (element: HTMLCanvasElement) => {

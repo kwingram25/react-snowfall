@@ -38,6 +38,7 @@ export const useSnowflakes = (
 
   // Handle change of amount
   useEffect(() => {
+    console.log(config, '1')
     setSnowflakes(snowflakes => {
       const sizeDifference = amount - snowflakes.length
 
@@ -55,6 +56,7 @@ export const useSnowflakes = (
 
   // Handle change of config
   useEffect(() => {
+    console.log(config, '2')
     setSnowflakes(snowflakes =>
       snowflakes.map(snowflake => {
         snowflake.config = config

@@ -1,9 +1,8 @@
 import React from 'react';
-import { SnowflakeConfig } from './Snowflake';
 export interface SnowfallProps {
-    config?: SnowflakeConfig;
+    color?: string;
     snowflakeCount?: number;
     style?: React.CSSProperties;
 }
-declare const Snowfall: ({ snowflakeCount, style, config }?: SnowfallProps) => JSX.Element;
+declare const Snowfall: ({ color, snowflakeCount, style }?: SnowfallProps) => JSX.Element;
 export default Snowfall;

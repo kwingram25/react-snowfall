@@ -3,7 +3,8 @@ import { targetFrameTime } from './config'
 import { useComponentSize, useSnowfallStyle, useSnowflakes } from './hooks'
 import { SnowflakeConfig } from './Snowflake';
 
-export interface SnowfallProps extends SnowflakeConfig {
+export interface SnowfallProps {
+  config?: SnowflakeConfig
   snowflakeCount?: number
   style?: React.CSSProperties
 }
@@ -12,7 +13,7 @@ const defaultConfig = {
   color: '#dee4fd'
 };
 
-const Snowfall = ({ snowflakeCount = 150, style, ...config }: SnowfallProps = {}) => {
+const Snowfall = ({ snowflakeCount = 150, style, config = {} }: SnowfallProps = {}) => {
   const mergedStyle = useSnowfallStyle(style)
 
   const canvasRef = useRef<HTMLCanvasElement>()

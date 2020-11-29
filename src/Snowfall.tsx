@@ -9,16 +9,22 @@ export interface SnowfallProps {
   style?: React.CSSProperties
 }
 
-const Snowfall = ({ snowflakeCount = 150, style, config = defaultConfig }: SnowfallProps = {}) => {
+const Snowfall = ({ snowflakeCount = 150, style, config }: SnowfallProps = {}) => {
   const mergedStyle = useSnowfallStyle(style)
 
   const canvasRef = useRef<HTMLCanvasElement>()
   const canvasSize = useComponentSize(canvasRef)
   const animationFrame = useRef(0)
 
-  const { color, speed, wind, radius, changeFrequency } = config
   const lastUpdate = useRef(Date.now())
 
+  const {
+    color = defaultConfig.color,
+    speed = defaultConfig.speed,
+    wind = defaultConfig.wind,
+    radius = defaultConfig.radius,
+    changeFrequency = defaultConfig.changeFrequency,
+  } = config || {}
   const mergedConfig = useMemo(
     () => Object.assign({}, defaultConfig, { color, speed, wind, radius, changeFrequency }),
     [color, speed, wind, radius, changeFrequency],

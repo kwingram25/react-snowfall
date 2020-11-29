@@ -20,7 +20,7 @@ const Snowfall = ({ snowflakeCount = 150, style, ...config }: SnowfallProps = {}
   const animationFrame = useRef(0)
 
   const lastUpdate = useRef(Date.now())
-  const { color, speed, wind, radius, changeFrequency } = config
+  const { color, speed, wind, radius, changeFrequency } = config || {}
   const mergedConfig = useMemo(() => ({ ...defaultConfig, color, speed, wind, radius, changeFrequency }), [
     color,
     speed,
